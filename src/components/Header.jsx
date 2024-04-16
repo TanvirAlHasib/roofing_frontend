@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
+import { Link } from "react-router-dom"
 import "../App.css"
 
 export default function Header() {
@@ -43,7 +44,7 @@ export default function Header() {
                 </li>
 
                 <li>
-                  <a className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" href="#"> Blog </a>
+                  <Link className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" to={"/blog"}> Blog </Link>
                 </li>
               </ul>
             </nav>
