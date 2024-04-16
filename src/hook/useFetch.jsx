@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 
 export default function useFetch(url) {
   
-    const [data, setData] = useState(null)
-    const [error, setError] = useState(null)
+    const [data, setData] = useState([])
+    const [error, setError] = useState('')
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -12,9 +12,9 @@ export default function useFetch(url) {
 
             try {
 
-                fetch(url)
-                .then(res => res.json())
-                .then(data => setData(data))
+                const res = await fetch(url)
+                const resData = await res.json()
+                setData(resData)
 
             } catch (error) {
 
@@ -33,6 +33,6 @@ export default function useFetch(url) {
     },[url])
 
 
-    return {data, error, loading}
+    return [data, error, loading]
 
 }

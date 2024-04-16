@@ -6,15 +6,19 @@
 import Blog from "./components/Blog"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
+import useFetch from "./hook/useFetch"
 
 
 
 function App() {
 
+  const [data, error, loading] = useFetch("https://jsonplaceholder.typicode.com/posts")
+  console.log(data);
+
   return(
     <>
       <Header/>
-      <Blog/>
+      <Blog data= {data} loading= {loading}/>
       <Footer/>
     </>
   )
