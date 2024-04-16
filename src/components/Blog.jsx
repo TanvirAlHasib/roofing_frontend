@@ -1,7 +1,15 @@
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
 
-export default function Blog({data, loading}) {
+export default function Blog({data, loading, error}) {
+
+  // if (error) {
+
+  //   return<>
+  //     <h1 className="text-7xl text-center">something went wrong</h1>
+  //   </>
+    
+  // }
   
   if (loading) {
 

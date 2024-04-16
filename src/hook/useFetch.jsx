@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 export default function useFetch(url) {
   
@@ -12,9 +13,8 @@ export default function useFetch(url) {
 
             try {
 
-                const res = await fetch(url)
-                const resData = await res.json()
-                setData(resData)
+                const res = await axios.get(url)
+                setData(res.data)
 
             } catch (error) {
 

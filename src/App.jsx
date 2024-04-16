@@ -18,7 +18,7 @@ function App() {
   return(
     <>
       <Header/>
-      <Blog data= {data} loading= {loading}/>
+      <Blog data= {data} loading= {loading} error= {error}/>
       <Footer/>
     </>
   )
