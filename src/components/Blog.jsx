@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
 
-export default function Blog({data, loading, error}) {
+export default function Blog({data, loading}) {
 
   // if (error) {
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import "../App.css"
 
 export default function Header() {
@@ -24,27 +24,27 @@ export default function Header() {
             <nav aria-label="Global">
               <ul className="flex items-center gap-9 text-sm">
                 <li>
-                  <a className="text-black transition hover:text-gray-500 tracking-wider font-normal text-lg" href="#"> About </a>
+                  <NavLink className="text-black transition hover:text-gray-500 tracking-wider font-normal text-lg" to={"/"}> Home </NavLink>
                 </li>
 
                 <li>
-                  <a className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" href="#"> Careers </a>
+                  <NavLink className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" to={"/about"}> About </NavLink>
                 </li>
 
                 <li>
-                  <a className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" href="#"> History </a>
+                  <NavLink className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" to={"/services"}> Services </NavLink>
                 </li>
 
                 <li>
-                  <a className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" href="#"> Services </a>
+                  <NavLink className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" to={"/appoinment"}> Appoinment </NavLink>
                 </li>
 
                 <li>
-                  <a className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" href="#"> Projects </a>
+                  <NavLink className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" to={"/contact"}> Contact </NavLink>
                 </li>
 
                 <li>
-                  <Link className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" to={"/blog"}> Blog </Link>
+                  <NavLink className="text-black transition hover:text-gray-500 font-normal tracking-wider text-lg" to={"/blog"}> Blog </NavLink>
                 </li>
               </ul>
             </nav>
