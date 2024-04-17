@@ -21,7 +21,7 @@ export default function Blog({data, loading}) {
   } else {
 
     return (
-      <div className="w-[90%] mx-auto flex flex-col items-center mt-20">
+      <div className="w-[80%] mx-auto flex flex-col items-center mt-20">
   
       <h1 className="text-7xl text-gray-800 font-bold">Our Blog</h1>
   
