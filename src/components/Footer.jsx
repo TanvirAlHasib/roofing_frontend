@@ -4,7 +4,7 @@ import Footerr from '../assets/footer-removebg-preview.png'
 
 export default function Footer() {
   return (
-    <footer className="lg:grid lg:grid-cols-5 lg:justify-between bg-gray-200">
+    <footer className="lg:grid lg:grid-cols-5 lg:justify-between bg-gray-100">
         <div className="relative block h-32 lg:col-span-2 lg:h-full">
             <img
             src={Footerr}

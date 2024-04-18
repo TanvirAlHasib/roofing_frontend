@@ -1,31 +1,75 @@
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
+import { Link } from 'react-router-dom'
+import HeroBackground from '../assets/hero_background-removebg-preview.png'
 
 export default function Hero() {
   return (
-    <article className="relative overflow-hidden rounded-lg shadow transition hover:shadow-lg">
-  <img
-    alt=""
-    src="https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
-    className="absolute inset-0 h-full w-full object-cover"
-  />
+    <div className="w-[100%] h-screen flex flex-col items-center mb-20 relative bg-gradient-to-l from-[#d4d3c6] to-[#9fa49b] overflow-hidden">
 
-  <div className="relative bg-gradient-to-t from-gray-900/50 to-gray-900/25 pt-32 sm:pt-48 lg:pt-64">
-    <div className="p-4 sm:p-6">
-      <time datetime="2022-10-10" className="block text-xs text-white/90"> 10th Oct 2022 </time>
+        <img
+            alt=""
+            src={HeroBackground}
+            className="absolute inset-0 h-min w-full object-cover left-[32rem] -top-14"
+        />
 
-      <a href="#">
-        <h3 className="mt-0.5 text-lg text-white">How to position your furniture for positivity</h3>
-      </a>
+        <div className='z-10 flex flex-col gap-9 w-[77%] h-full items-start justify-center'>
 
-      <p className="mt-2 line-clamp-3 text-sm/relaxed text-white/95">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae dolores, possimus
-        pariatur animi temporibus nesciunt praesentium dolore sed nulla ipsum eveniet corporis
-        quidem, mollitia itaque minus soluta, voluptates neque explicabo tempora nisi culpa eius
-        atque dignissimos. Molestias explicabo corporis voluptatem?
-      </p>
+            <h1 className='text-[7.5rem] font-bold text-gray-50 tracking-normal leading-[8rem] w-[55rem]'>Roofing Service in West London.</h1>
+
+            <p className='text-white text-xl w-[50rem]'>From handling insurance communications to coordinating with trusted and vetted contractors are taken care of.</p>
+
+            <div className='flex gap-7'>
+
+                <Link
+                    className="rounded-md bg-teal-600 px-6 py-3.5 font-medium text-xl tracking-normal text-white shadow transition-all ease-linear duration-300 hover:border hover:border-gray-800 hover:bg-white hover:text-black"
+                    to={"/appoinment"}
+                >
+                    Book A Free Consultation
+                </Link>
+
+                <Link
+                    className="rounded-md hover:bg-teal-600 px-6 py-3.5 font-medium text-xl tracking-normal hover:text-white shadow transition-all ease-linear duration-300 hover:border hover:border-gray-800 bg-gray-100 text-black"
+                    to={"/services"}
+                >
+                    Explore Our Services
+                </Link>
+
+            </div>
+
+            <div className='flex gap-10 mt-6'>
+
+                {/* <!-- Component: Rounded full base sized basic grouped avatars --> */}
+                <div className="flex items-center justify-center">
+                    <div className="flex -space-x-2">
+                        <a href="#" className="relative inline-flex items-center justify-center w-14 h-14 text-white rounded-full">
+                        <img src="https://i.pravatar.cc/40?img=31" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
+                        </a>
+                        
+                        <a href="#" className="relative inline-flex items-center justify-center w-14 h-14 text-white rounded-full">
+                        <img src="https://i.pravatar.cc/40?img=33" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
+                        </a>
+                        <a href="#" className="relative inline-flex items-center justify-center w-14 h-14 text-lg text-white rounded-full bg-emerald-500">
+                        <img src="https://i.pravatar.cc/40?img=34" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
+                        </a>
+                        <a href="#" className="relative inline-flex items-center justify-center w-14 h-14 text-white rounded-full">
+                        <img src="https://i.pravatar.cc/40?img=34" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
+                        </a>
+                    </div>
+                </div>
+                {/* <!-- End Rounded full base sized basic grouped avatars --> */}
+
+                <div className='flex flex-col gap-1'>
+
+                    <h3 className='text-5xl text-gray-50 font-bold'>1550+</h3>
+
+                    <p className='text-gray-50'>Satisfied Customers</p>
+
+                </div>
+
+            </div>
+        </div>
+
     </div>
-  </div>
-</article>
   )
 }

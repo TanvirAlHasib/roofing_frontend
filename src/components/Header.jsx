@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import "../App.css"
 import Logo from '../assets/logo.png'
 
 export default function Header() {
   return (
-    <header className="bg-gray-200 py-5">
+    <header className="bg-gray-100 py-5">
       <div className="mx-auto w-[80%] px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
@@ -51,12 +51,12 @@ export default function Header() {
 
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              <a
+              <Link
                 className="rounded-md bg-teal-600 px-5 py-2.5 font-medium text-lg tracking-wide text-white shadow transition-all ease-linear duration-300 hover:border hover:border-gray-800 hover:bg-white hover:text-black"
-                href="#"
+                to={"/appoinment"}
               >
                 Book A Free Consultation
-              </a>
+              </Link>
             </div>
 
             <div className="block md:hidden">
