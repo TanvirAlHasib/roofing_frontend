@@ -5,7 +5,7 @@ import HeroBackground from '../assets/hero_background-removebg-preview.png'
 
 export default function Hero() {
   return (
-    <div className="w-[100%] h-screen flex flex-col items-center mb-20 relative bg-gradient-to-l from-[#d4d3c6] to-[#9fa49b] overflow-hidden">
+    <div className="w-[100%] h-screen flex flex-col items-center relative bg-gradient-to-l from-[#d4d3c6] to-[#9fa49b] overflow-hidden">
 
         <img
             alt=""
