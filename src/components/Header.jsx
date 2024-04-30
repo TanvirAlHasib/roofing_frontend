@@ -2,11 +2,12 @@
 // import React from 'react'
 import "../App.css"
 import Logo from '../assets/logo.png'
+import { Link, NavLink } from "react-router-dom"
 
 export default function Header() {
   return (
-    <header className="bg-gray-200 py-5">
-      <div className="mx-auto w-[90%] px-4 sm:px-6 lg:px-8">
+    <header className="bg-gray-100 py-5">
+      <div className="mx-auto w-[80%] px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12">
             <NavLink className="block text-teal-600" to={"/"}>
