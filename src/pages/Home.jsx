@@ -3,6 +3,7 @@ import Experience from '../components/Experience'
 import FreeConsultation from '../components/FreeConsultation'
 import Hero from '../components/Hero'
 import ReasonToChoose from '../components/ReasonToChoose'
+import Testimonials from '../components/Testimonials'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <ReasonToChoose/>
         <Experience/>
         <FreeConsultation/>
+        <Testimonials/>
     </>
   )
 }

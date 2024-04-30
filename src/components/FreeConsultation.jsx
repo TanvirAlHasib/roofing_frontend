@@ -4,7 +4,7 @@ import FreeConsultationImage2 from '../assets/free_consultation_2.png'
 
 export default function FreeConsultation() {
   return (
-    <div className="w-full h-screen mb-36 overflow-hidden bg-image relative">
+    <div className="w-full h-screen pb-36 overflow-hidden bg-image relative">
 
         <img
             src={FreeConsultationImage2}
