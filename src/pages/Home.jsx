@@ -2,6 +2,7 @@
 import Experience from '../components/Experience'
 import FreeConsultation from '../components/FreeConsultation'
 import Hero from '../components/Hero'
+import HomeBlogSection from '../components/HomeBlogSection'
 import ReasonToChoose from '../components/ReasonToChoose'
 import Testimonials from '../components/Testimonials'
 
@@ -13,6 +14,7 @@ export default function Home() {
         <Experience/>
         <FreeConsultation/>
         <Testimonials/>
+        <HomeBlogSection/>
     </>
   )
 }
