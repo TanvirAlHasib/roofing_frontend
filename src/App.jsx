@@ -6,8 +6,6 @@
 import Blog from "./components/Blog"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
-import useFetch from "./hook/useFetch"
-import { Routes, Route } from "react-router-dom";
 
 
 
@@ -19,9 +17,7 @@ function App() {
   return(
     <>
       <Header/>
-      <Routes>
-        <Route path="/blog" element={<Blog data= {data} loading={loading} error={error}/>}/>
-      </Routes>
+      <Blog/>
       <Footer/>
     </>
   )

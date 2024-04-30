@@ -5,7 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: { backgroundImage: {'image': "url('./src/assets/free_consultation_1.webp')",},},
   },
   plugins: [],
 }
