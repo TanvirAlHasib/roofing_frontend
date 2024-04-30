@@ -1,5 +1,6 @@
 // import React from 'react'
 import Experience from '../components/Experience'
+import FAQ from '../components/FAQ'
 import FreeConsultation from '../components/FreeConsultation'
 import Hero from '../components/Hero'
 import HomeBlogSection from '../components/HomeBlogSection'
@@ -15,6 +16,7 @@ export default function Home() {
         <FreeConsultation/>
         <Testimonials/>
         <HomeBlogSection/>
+        <FAQ/>
     </>
   )
 }
