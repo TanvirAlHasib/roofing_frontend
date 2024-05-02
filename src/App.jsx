@@ -9,6 +9,7 @@ import Header from "./components/Header"
 import useFetch from "./hook/useFetch"
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import SingleBlog from "./pages/SingleBlog";
 
 
 
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/blog" element={<Blog data= {data} loading={loading} error={error}/>}/>
         <Route path="/" element= {<Home/>}/>
+        <Route path="/blog/:id" element={<SingleBlog/>}/>
       </Routes>
       <Footer/>
     </>
