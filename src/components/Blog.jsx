@@ -33,19 +33,19 @@ export default function Blog({data, loading}) {
               <article key={singleData.id} className="overflow-hidden w-[28rem] rounded-lg shadow transition hover:shadow-lg">
               <img
                   alt=""
-                  src={`http://localhost:1338${singleData.attributes.image.data[0].attributes.url}`}
+                  src={`${import.meta.env.VITE_APP_API_URL}${singleData.attributes.image.data[0].attributes.url}`}
                   className="h-56 w-full object-cover"
               />
   
               <div className="bg-white p-4 sm:p-6">
-                  <time datetime="2022-10-10" className="block text-sm text-gray-500 font-medium"> {singleData.attributes.date} </time>
+                  <time datetime="2022-10-10" className="block text-sm text-gray-500 font-medium mb-3"> {singleData.attributes.date} </time>
   
                   <a href="#">
                   <h3 className="mt-0.5 text-2xl text-gray-700 font-semibold line-clamp-1">{singleData.attributes.title}</h3>
                   </a>
   
                   <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-600">
-                  description
+                    {singleData.attributes.short_des}
                   </p>
               </div>
           </article>
