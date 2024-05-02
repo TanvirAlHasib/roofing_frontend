@@ -14,7 +14,7 @@ import Home from "./pages/Home";
 
 function App() {
 
-  const [data, error, loading] = useFetch("https://jsonplaceholder.typicode.com/posts")
+  const [data, error, loading] = useFetch(`${import.meta.env.VITE_APP_API_URL}/api/blogs?populate=*`)
   console.log(data);
 
   return(
