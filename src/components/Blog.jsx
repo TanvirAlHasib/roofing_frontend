@@ -2,6 +2,8 @@
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
 
+import { Link } from "react-router-dom"
+
 export default function Blog({data, loading}) {
 
   // if (error) {
@@ -11,7 +13,7 @@ export default function Blog({data, loading}) {
   //   </>
     
   // }
-  
+
   if (loading) {
 
     return <>
@@ -40,9 +42,9 @@ export default function Blog({data, loading}) {
               <div className="bg-white p-4 sm:p-6">
                   <time datetime="2022-10-10" className="block text-sm text-gray-500 font-medium mb-3"> {singleData.attributes.date} </time>
   
-                  <a href="#">
-                  <h3 className="mt-0.5 text-2xl text-gray-700 font-semibold line-clamp-1">{singleData.attributes.title}</h3>
-                  </a>
+                  <Link to={`/blog/${singleData.id}`}>
+                    <h3 className="mt-0.5 text-2xl text-gray-700 font-semibold line-clamp-1">{singleData.attributes.title}</h3>
+                  </Link>
   
                   <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-600">
                     {singleData.attributes.short_des}

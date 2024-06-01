@@ -7,6 +7,8 @@ export default {
   theme: {
     extend: { backgroundImage: {'image': "url('./src/assets/free_consultation_1.webp')",},},
   },
-  plugins: [],
+  // we need this plugin to get the style of rich text of starpi backend
+  // eslint-disable-next-line no-undef
+  plugins: [require('@tailwindcss/typography'),],
 }
 
