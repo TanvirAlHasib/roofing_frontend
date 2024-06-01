@@ -16,7 +16,7 @@ import SingleBlog from "./pages/SingleBlog";
 function App() {
 
   const [data, error, loading] = useFetch(`${import.meta.env.VITE_APP_API_URL}/api/blogs?populate=*`)
-  console.log(data);
+  // console.log(data);
 
   return(
     <>
