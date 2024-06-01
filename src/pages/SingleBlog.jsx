@@ -39,12 +39,12 @@ export default function SingleBlog() {
 
             <h1 className="text-7xl text-gray-800 font-bold text-center w-[75rem]">{data.attributes.title}</h1>
 
-            <p className="text-xl text-gray-600"> Date: {data.attributes.date} </p>
+            <p className="text-xl text-gray-600"> Date: {data.attributes.date} &nbsp; &nbsp; <span className="inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700"> {data.attributes.category} </span> </p>
 
             <img
               alt="Image"
               src={`${import.meta.env.VITE_APP_API_URL}${data.attributes.image.data[0].attributes.url}`}
-              className="w-[65%] h-[33rem] object-cover"
+              className="w-[65%] h-[33rem] object-cover rounded-lg shadow-lg"
             />
 
             {/* for getting rich text style from starpi backend we need to install typography plugin of tailwindcss and to use we need call the class prose */}
@@ -54,6 +54,16 @@ export default function SingleBlog() {
               <BlocksRenderer content={data.attributes.description} />
 
             </article>
+
+            <div className="flex gap-3">
+              {
+                data.attributes.tags.map(tag => (
+                  // eslint-disable-next-line react/jsx-key
+                  <span className="inline-flex items-center justify-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700"> {tag.name} </span>
+                  
+                ))
+              }
+            </div>
 
           </div>
 
