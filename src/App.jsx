@@ -10,6 +10,7 @@ import useFetch from "./hook/useFetch"
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SingleBlog from "./pages/SingleBlog";
+import Services from "./pages/Services";
 
 
 
@@ -22,9 +23,10 @@ function App() {
     <>
       <Header/>
       <Routes>
-        <Route path="/blog" element={<Blog data= {data} loading={loading} error={error}/>}/>
+        <Route path="/blog" element= {<Blog data= {data} loading={loading} error={error}/>}/>
         <Route path="/" element= {<Home/>}/>
-        <Route path="/blog/:id" element={<SingleBlog/>}/>
+        <Route path="/blog/:id" element= {<SingleBlog/>}/>
+        <Route path="/services" element= {<Services/>}/>
       </Routes>
       <Footer/>
     </>
