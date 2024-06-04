@@ -83,3 +83,14 @@ body{
     font-family: "Roboto", sans-serif;
 
 }
+
+/* for leaflet map width and height */
+
+.leaflet-container {
+  width: 99vw;
+  height: 70vh;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid rgb(69, 155, 155);
+  border-radius: 5px;
+}

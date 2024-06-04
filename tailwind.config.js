@@ -9,6 +9,6 @@ export default {
   },
   // we need this plugin to get the style of rich text of starpi backend
   // eslint-disable-next-line no-undef
-  plugins: [require('@tailwindcss/typography'),],
+  plugins: [require('@tailwindcss/typography','@tailwindcss/forms'),],
 }
 
