@@ -19,7 +19,7 @@ export default function useFetch(url) {
                     },
                 })
                 
-                console.log(res.data.data);
+                // console.log(res.data.data);
                 setData(res.data.data)
 
             } catch (error) {

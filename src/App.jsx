@@ -11,6 +11,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SingleBlog from "./pages/SingleBlog";
 import Services from "./pages/Services";
+import Contact from "./pages/Contact";
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element= {<Home/>}/>
         <Route path="/blog/:id" element= {<SingleBlog/>}/>
         <Route path="/services" element= {<Services/>}/>
+        <Route path="/contact" element = {<Contact/>}/>
       </Routes>
       <Footer/>
     </>
