@@ -40,7 +40,7 @@ export default function Contact() {
                     />
                     <Marker position={[52.22, 4.53]}>
                         <Popup>
-                        Roofer company headquater 🏢
+                            Roofer company headquater 🏢
                         </Popup>
                     </Marker>
                 </MapContainer>
