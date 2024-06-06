@@ -1,10 +1,21 @@
 // import React from 'react'
 
+import { Link } from "react-router-dom";
 import useFetch from "../../hook/useFetch"
+import { useContext } from "react";
+import { context } from "../../context/CartContext";
 
 export default function Pricing() {
 
     const [data, error, loading] = useFetch(`${import.meta.env.VITE_APP_API_URL}/api/services?populate=*`);
+
+    const {setCart} = useContext(context);
+
+    const updateCart = (data) => {
+
+        setCart(data);
+
+    }
 
     if (data) {
 
@@ -59,12 +70,13 @@ export default function Pricing() {
             
                                         </ul>
                     
-                                        <a
-                                            href="#"
+                                        <Link
+                                            to={"/check_out"}
                                             className="mt-8 block rounded-full border border-teal-200 bg-teal-600 px-12 py-3 text-center text-sm font-medium text-white hover:bg-teal-700 hover:ring-1 hover:ring-teal-700 focus:outline-none focus:ring active:text-teal-500"
+                                            onClick={() => updateCart(data)}
                                         >
                                             Get Started
-                                        </a>
+                                        </Link>
                                     </div>
                                 ))
                             }
