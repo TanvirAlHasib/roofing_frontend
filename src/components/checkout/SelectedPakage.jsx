@@ -1,37 +1,236 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/no-unknown-property */
 // import React from 'react'
 
 import { useContext, useState } from "react"
 import { context } from "../../context/CartContext"
+import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 export default function SelectedPakage() {
 
-    // for showing the card details if user select the card option
-    const [radioValue, setRadioValue] = useState("");
 
-    const getRadioValue = (e) => {
+    // getting cart data by context api
+    const {cart} = useContext(context);
 
-        setRadioValue(e.target.value);
-
-    }
-
-    const {cart} = useContext(context)
-
-    console.log(cart);
 
     // checking if there is any data in cart by measuring the length of cart object
 
     if (Object.keys(cart).length !== 0) {
 
+        // for showing the card details if user select the card option
+        const [radioValue, setRadioValue] = useState("PaymentLater");
+
+        const getRadioValue = (e) => {
+
+            setRadioValue(e.target.value);
+
+        }
+
+        // saving empty object key to render after submit data
+        const [afterSubmit, setAfterSubmit] = useState({
+            name: "",
+            email: "",
+            phone: "",
+            card_holder: "",
+            expairy_date: "",
+            card_number: "",
+            cvc: "",
+            city: "",
+            home_town: "",
+            zip_code: "",
+            order_notes: "",
+            PaymentOption: "PaymentLater",
+            total_price: cart.attributes.price + Math.ceil(cart.attributes.price*0.05),
+            package_name: cart.attributes.service_name,
+            duration: cart.attributes.duration,
+        })
+
+        
+        // getting users information and selected package information from form and sending data to the backend
+        const [userData, setUserData] = useState({
+            name: "",
+            email: "",
+            phone: "",
+            card_holder: "",
+            expairy_date: "",
+            card_number: "",
+            cvc: "",
+            city: "",
+            home_town: "",
+            zip_code: "",
+            order_notes: "",
+            PaymentOption: "PaymentLater",
+            total_price: cart.attributes.price + Math.ceil(cart.attributes.price*0.05),
+            package_name: cart.attributes.service_name,
+            duration: cart.attributes.duration,
+        })
+        const getUserInformation = (e) => {
+
+            setUserData( (prev) => (
+                {
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                    PaymentOption: radioValue
+                }
+            ) )
+
+            setAfterSubmit( (prev) => (
+                {
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                    PaymentOption: radioValue
+                }
+            ) )
+
+        }
+
+        console.log("after submit:",afterSubmit);
+
+        // to delete empty keys of the object to resolve bad request problem
+        Object.keys(userData).forEach(key => {
+            if (!userData[key]) delete userData[key];
+        })
+
+        console.table(userData);
+
+        // sending data to the database
+        const sendData = (e) => {
+
+            e.preventDefault();
+
+
+            // using axios to submit data
+            axios.post(`${import.meta.env.VITE_APP_API_URL}/api/orders`,
+
+                {
+                    // this data format is espesific for strapi post method, according to their docs. evrything is same we just have to wrap our data to a data object. that's it.
+                    data: {
+                    name: userData.name,
+                    email: userData.email,
+                    phone: userData.phone,
+                    card_holder: userData.card_holder,
+                    expairy_date: userData.expairy_date,
+                    card_number: userData.card_number,
+                    cvc: userData.cvc,
+                    city: userData.city,
+                    home_town: userData.home_town,
+                    zip_code: userData.zip_code,
+                    order_notes: userData.order_notes,
+                    PaymentOption: userData.PaymentOption,
+                    total_price: cart.attributes.price + Math.ceil(cart.attributes.price*0.05),
+                    package_name: cart.attributes.service_name,
+                    duration: cart.attributes.duration,
+
+                }},
+                {
+
+                headers: {
+                    // telling them which will use to sumbit data and that is json
+                    'Content-Type': 'application/json',
+                    Authorization: `bearer ${import.meta.env.VITE_APP_API_TOKEN}`
+                },    
+
+
+            }
+
+            ).then((response) => {
+
+                if (response.status === 200) {
+
+                    // making the input field empty after submitting the data
+                    // we have to both makes clear otherwise previous data will enter the database
+                    setUserData(
+                        {
+                            name: "",
+                            email: "",
+                            phone: "",
+                            card_holder: "",
+                            expairy_date: "",
+                            card_number: "",
+                            cvc: "",
+                            city: "",
+                            home_town: "",
+                            zip_code: "",
+                            order_notes: "",
+                            PaymentOption: "PaymentLater",
+                        }
+                    )
+
+                    // we have to both makes clear otherwise previous data will enter the database
+
+                    setAfterSubmit(
+                        {
+                            name: "",
+                            email: "",
+                            phone: "",
+                            card_holder: "",
+                            expairy_date: "",
+                            card_number: "",
+                            cvc: "",
+                            city: "",
+                            home_town: "",
+                            zip_code: "",
+                            order_notes: "",
+                            PaymentOption: "PaymentLater",
+                        }
+                    )
+
+                    toast.success("Successfully submitted!");
+
+                    // console.log(response);
+                    
+                }
+
+            }).catch((error) => {
+
+                console.log(error);
+
+                toast.error("Something went wrong ☹");
+
+            })
+
+        }
+
         return (
     
             <>
+                <Toaster
+                    position="top-center"
+                    reverseOrder={false}
+                    gutter={8}
+                    containerClassName=""
+                    containerStyle={{}}
+                    toastOptions={{
+                        // Define default options
+                        className: '',
+                        duration: 5000,
+                        style: {
+                        background: '#363636',
+                        color: '#fff',
+                        },
+
+                        // Default options for specific types
+                        success: {
+                        duration: 3000,
+                        theme: {
+                            primary: 'green',
+                            secondary: 'black',
+                        },
+                        },
+                    }}
+                />
+
+                {/* toaster component end here */}
+
                 {/* <!--
                 Heads up! 👋
         
                 Plugins:
                     - @tailwindcss/forms
                 --> */}
+
+                {/* toaster component start here */}
         
                 <div className="mx-auto w-[60%] px-4 py-8 sm:px-6 sm:py-20 lg:px-8">
                     <div className="mx-auto">
@@ -171,16 +370,19 @@ export default function SelectedPakage() {
                     <div className="px-4 sm:px-6 lg:px-8">
 
                     <div className="rounded-lg bg-gray-100 p-8 shadow-lg lg:col-span-3 lg:p-12">
-                        <form action="#" className="space-y-4">
+                        {
+                            radioValue === "Card" ? <form action="#" className="space-y-4" onSubmit={sendData}>
                             <div>
                                 <label className="sr-only" htmlFor="name">Name</label>
                                 <input
-                                className="w-full rounded-lg border border-teal-200 p-3 text-base focus:outline-teal-300"
-                                placeholder="Name"
-                                type="text"
-                                id="name"
-                                name="name"
-                                required
+                                    className="w-full rounded-lg border border-teal-200 p-3 text-base focus:outline-teal-300"
+                                    placeholder="Name"
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={afterSubmit.name}
+                                    required
+                                    onChange={getUserInformation}
                                 />
                             </div>
 
@@ -193,7 +395,8 @@ export default function SelectedPakage() {
                                     type="email"
                                     id="email"
                                     name="email"
-                                
+                                    value={afterSubmit.email}
+                                    onChange={getUserInformation}
                                 />
                                 </div>
 
@@ -205,15 +408,14 @@ export default function SelectedPakage() {
                                     type="tel"
                                     id="phone"
                                     name="phone"
+                                    value={afterSubmit.phone}
                                     required
-                                    
+                                    onChange={getUserInformation}
                                 />
                                 </div>
                             </div>
 
-                            {/* for card payment form input field start here */}
-                            {
-                                radioValue === "Card" ? <div>
+                            <div>
                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                     <div>
                                     <label className="sr-only" htmlFor="email">Card holder</label>
@@ -223,8 +425,9 @@ export default function SelectedPakage() {
                                         type="text"
                                         id="card_holder"
                                         name="card_holder"
+                                        value={afterSubmit.card_holder}
                                         required
-                                    
+                                        onChange={getUserInformation}
                                     />
                                     </div>
 
@@ -236,8 +439,9 @@ export default function SelectedPakage() {
                                             type="date"
                                             id="expairy_date"
                                             name="expairy_date"
+                                            value={afterSubmit.expairy_date}
                                             required
-                                            
+                                            onChange={getUserInformation}
                                         />
                                     </div>
                                 </div>
@@ -251,8 +455,9 @@ export default function SelectedPakage() {
                                         type="number"
                                         id="card_number"
                                         name="card_number"
+                                        value={afterSubmit.card_number}
                                         required
-                                    
+                                        onChange={getUserInformation}
                                     />
                                     </div>
 
@@ -264,8 +469,9 @@ export default function SelectedPakage() {
                                             type="number"
                                             id="cvc"
                                             name="cvc"
+                                            value={afterSubmit.cvc}
                                             required
-                                            
+                                            onChange={getUserInformation}
                                         />
                                     </div>
                                 </div>
@@ -279,7 +485,8 @@ export default function SelectedPakage() {
                                         type="text"
                                         id="city"
                                         name="city"
-                                    
+                                        value={afterSubmit.city}
+                                        onChange={getUserInformation}
                                     />
                                     </div>
 
@@ -291,7 +498,8 @@ export default function SelectedPakage() {
                                             type="text"
                                             id="home_town"
                                             name="home_town"
-                                            
+                                            value={afterSubmit.home_town}
+                                            onChange={getUserInformation}
                                         />
                                     </div>
 
@@ -303,13 +511,79 @@ export default function SelectedPakage() {
                                             type="number"
                                             id="zip_code"
                                             name="zip_code"
-                                            
+                                            value={afterSubmit.zip_code}
+                                            onChange={getUserInformation}
                                         />
                                     </div>
                                 </div>
-                            </div> : ""
-                            }
-                            {/* for card payment form input field end here */}
+                            </div> 
+                  
+                            <div>
+                                <label className="sr-only" htmlFor="message">Order notes</label>
+
+                                <textarea
+                                    className="w-full rounded-lg border border-teal-200 p-3 text-base focus:outline-teal-300"
+                                    placeholder="Order notes"
+                                    rows="8"
+                                    id="order_notes"
+                                    name="order_notes"
+                                    value={afterSubmit.order_notes}
+                                    onChange={getUserInformation}
+                                ></textarea>
+                            </div>
+
+                            <div className="mt-4 flex justify-center">
+                                <button
+                                    type="submit"
+                                    className="inline-block w-full rounded-lg bg-teal-600 hover:bg-teal-800 px-5 py-3 font-medium text-white sm:w-auto"
+                                >
+                                    Place Order
+                                </button>
+
+                            </div>
+                        </form> : <form action="#" className="space-y-4" onSubmit={sendData}>
+                            <div>
+                                <label className="sr-only" htmlFor="name">Name</label>
+                                <input
+                                    className="w-full rounded-lg border border-teal-200 p-3 text-base focus:outline-teal-300"
+                                    placeholder="Name"
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={afterSubmit.name}
+                                    required
+                                    onChange={getUserInformation}
+                                />
+                            </div>
+
+                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <div>
+                                <label className="sr-only" htmlFor="email">Email</label>
+                                <input
+                                    className="w-full rounded-lg border border-teal-200 p-3 text-base focus:outline-teal-300"
+                                    placeholder="Email address"
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={afterSubmit.email}
+                                    onChange={getUserInformation}
+                                />
+                                </div>
+
+                                <div>
+                                <label className="sr-only" htmlFor="phone">Phone</label>
+                                <input
+                                    className="w-full rounded-lg border border-teal-200 p-3 text-base focus:outline-teal-300"
+                                    placeholder="Phone Number"
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    value={afterSubmit.phone}
+                                    required
+                                    onChange={getUserInformation}
+                                />
+                                </div>
+                            </div>
 
 
                             <div>
@@ -321,7 +595,8 @@ export default function SelectedPakage() {
                                     rows="8"
                                     id="order_notes"
                                     name="order_notes"
-                                    
+                                    value={afterSubmit.order_notes}
+                                    onChange={getUserInformation}
                                 ></textarea>
                             </div>
 
@@ -335,6 +610,7 @@ export default function SelectedPakage() {
 
                             </div>
                         </form>
+                        }
                     </div>
 
                     </div>
