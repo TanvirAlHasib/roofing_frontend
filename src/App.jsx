@@ -12,6 +12,8 @@ import Home from "./pages/Home";
 import SingleBlog from "./pages/SingleBlog";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
+import Checkout from "./pages/Checkout";
+import CartContext from "./context/CartContext";
 
 
 
@@ -22,6 +24,7 @@ function App() {
 
   return(
     <>
+      <CartContext>
       <Header/>
       <Routes>
         <Route path="/blog" element= {<Blog data= {data} loading={loading} error={error}/>}/>
@@ -29,8 +32,10 @@ function App() {
         <Route path="/blog/:id" element= {<SingleBlog/>}/>
         <Route path="/services" element= {<Services/>}/>
         <Route path="/contact" element = {<Contact/>}/>
+        <Route path="/check_out" element = {<Checkout/>}/>
       </Routes>
       <Footer/>
+      </CartContext>
     </>
   )
 }
