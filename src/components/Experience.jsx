@@ -67,7 +67,7 @@ export default function Experience() {
 
                     <div className='flex gap-7'>
 
-                        <h2 className='text-5xl text-white bg-[#5f5f57] h-20 w-20 text-center rounded-full pt-3 border-[4px] border-teal-600 font-medium'>1</h2>
+                        <h2 className='text-5xl text-white bg-[#5f5f57] h-20 w-20 text-center rounded-full pt-3 border-[4px] border-teal-600 font-medium'>2</h2>
 
                         <div className='flex flex-col gap-2'>
 
@@ -81,7 +81,7 @@ export default function Experience() {
 
                     <div className='flex gap-7'>
 
-                        <h2 className='text-5xl text-white bg-[#5f5f57] h-20 w-20 text-center rounded-full pt-3 border-[4px] border-teal-600 font-medium'>1</h2>
+                        <h2 className='text-5xl text-white bg-[#5f5f57] h-20 w-20 text-center rounded-full pt-3 border-[4px] border-teal-600 font-medium'>3</h2>
 
                         <div className='flex flex-col gap-2'>
 

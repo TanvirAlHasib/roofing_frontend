@@ -14,6 +14,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Checkout from "./pages/Checkout";
 import CartContext from "./context/CartContext";
+import AboutUs from "./pages/AboutUs";
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/services" element= {<Services/>}/>
         <Route path="/contact" element = {<Contact/>}/>
         <Route path="/check_out" element = {<Checkout/>}/>
+        <Route path="/about" element = {<AboutUs/>}/>
       </Routes>
       <Footer/>
       </CartContext>
