@@ -627,7 +627,7 @@ export default function SelectedPakage() {
         return(
 
             <>
-                <h1 className="text-7xl text-center my-20 font-semibold">ooppss....cart is empty ☹</h1>
+                <h1 className="text-7xl text-center my-20 font-semibold h-[30vh] flex flex-col items-center justify-center">ooppss....cart is empty ☹</h1>
             </>
 
         )
