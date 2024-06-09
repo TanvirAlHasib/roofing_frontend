@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import Checkout from "./pages/Checkout";
 import CartContext from "./context/CartContext";
 import AboutUs from "./pages/AboutUs";
+import Appoinment from "./pages/Appoinment";
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/contact" element = {<Contact/>}/>
         <Route path="/check_out" element = {<Checkout/>}/>
         <Route path="/about" element = {<AboutUs/>}/>
+        <Route path="/appoinment" element = {<Appoinment/>}/>
       </Routes>
       <Footer/>
       </CartContext>

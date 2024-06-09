@@ -50,7 +50,7 @@ export default function Hero() {
                         <img src="https://i.pravatar.cc/40?img=33" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
                         </a>
                         <a href="#" className="relative inline-flex items-center justify-center w-14 h-14 text-lg text-white rounded-full bg-emerald-500">
-                        <img src="https://i.pravatar.cc/40?img=34" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
+                        <img src="https://framerusercontent.com/images/g5Wkr2KAbRVpUTnDbroYz6JKYw.svg" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
                         </a>
                         <a href="#" className="relative inline-flex items-center justify-center w-14 h-14 text-white rounded-full">
                         <img src="https://i.pravatar.cc/40?img=34" alt="user name" title="user name" width="56" height="56" className="max-w-full border-2 border-white rounded-full" />
