@@ -17,7 +17,7 @@ export default function Blog({data, loading}) {
   if (loading) {
 
     return <>
-      <h1 className="text-7xl text-center">loading...</h1>
+      <h1 className="text-7xl text-center my-20 font-semibold h-[30vh] flex flex-col items-center justify-center">loading...</h1>
     </>
     
   } else {
